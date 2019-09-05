@@ -1,8 +1,6 @@
-package mod09.exercise3.banking.domain;
+package mod09.exercise4.banking.domain;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Bank {
     private List<Customer> customers;
@@ -31,5 +29,9 @@ public class Bank {
 
     public Iterator getCustomers() {
         return customers.iterator();
+    }
+
+    public void sortCustomers() {
+        Collections.sort(customers);
     }
 }

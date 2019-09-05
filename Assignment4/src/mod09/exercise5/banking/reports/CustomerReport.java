@@ -1,10 +1,17 @@
-package mod09.exercise3.banking.reports;
+package mod09.exercise5.banking.reports;
 
-import mod09.exercise3.banking.domain.*;
+import mod09.exercise5.banking.domain.*;
 
 import java.text.NumberFormat;
 //TODO
 // Why should it be modified to use ArrayList?
+
+/**
+ * Iterate the customer list and print a customer report.
+ *
+ * @author N/A
+ * @since N/A
+ */
 
 public class CustomerReport {
 

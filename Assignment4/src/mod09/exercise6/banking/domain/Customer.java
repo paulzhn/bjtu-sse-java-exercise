@@ -1,10 +1,10 @@
-package mod09.exercise3.banking.domain;
+package banking.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
     private String firstName, lastName;
     List<Account> account;
 
@@ -40,5 +40,13 @@ public class Customer {
 
     public Iterator getAccounts() {
         return account.iterator();
+    }
+
+    public int compareTo(Customer o) {
+        if (lastName.compareTo(o.lastName) != 0) {
+            return lastName.compareTo(o.lastName);
+        } else {
+            return firstName.compareTo(o.firstName);
+        }
     }
 }

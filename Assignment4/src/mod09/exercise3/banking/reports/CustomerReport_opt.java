@@ -3,10 +3,11 @@ package mod09.exercise3.banking.reports;
 import mod09.exercise3.banking.domain.*;
 
 import java.text.NumberFormat;
+import java.util.Iterator;
 //TODO
 // Why should it be modified to use ArrayList?
 
-public class CustomerReport {
+public class CustomerReport_opt {
 
     public void generateReport() {
         NumberFormat currency_format = NumberFormat.getCurrencyInstance();
@@ -14,20 +15,23 @@ public class CustomerReport {
         Bank bank = Bank.getBank(); /*** STEP 1: RETRIEVE BANK SINGLETON OBJECT HERE ***/
 
         Customer customer;
+        Iterator customerIt = bank.getCustomers();
 
         System.out.println("\t\t\tCUSTOMERS REPORT");
         System.out.println("\t\t\t================");
 
-        for (int cust_idx = 0; cust_idx < bank.getNumOfCustomers(); cust_idx++) {
-            customer = bank.getCustomer(cust_idx);
+        while(customerIt.hasNext()) {
+            customer = (Customer)customerIt.next();
+
+            Iterator accountIt = customer.getAccounts();
 
             System.out.println();
             System.out.println("Customer: "
                     + customer.getLastName() + ", "
                     + customer.getFirstName());
 
-            for (int acct_idx = 0; acct_idx < customer.getNumOfAccounts(); acct_idx++) {
-                Account account = customer.getAccount(acct_idx);
+            while(accountIt.hasNext()) {
+                Account account = (Account)accountIt.next();
                 String account_type = "";
 
                 // Determine the account type
