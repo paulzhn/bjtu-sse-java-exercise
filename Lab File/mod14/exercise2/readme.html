@@ -1,0 +1,61 @@
+<HTML>
+
+<HEAD>
+   <TITLE>SL275: Module14: Exercise #2: Use Threads in Applet Animation</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR=white>
+
+
+<CENTER>
+<H2>SL275: Module14: Threads</H2>
+<H3>Exercise #2: Use Threads in Applet Animation</H3>
+<H3>(Level 2)</H3>
+</CENTER>
+
+
+<H3>Objective</H3>
+
+<P>
+In this exercise you will use a thread to control the animation within an applet.
+</P>
+
+
+<H3>Directions</H3>
+
+<P>
+
+<OL>
+
+  <LI>Create an applet called <TT>ThreadedAnimation</TT> that takes 10
+      images of Duke waving (in the graphics/Duke directory) and displays
+      them in a sequence that makes it look like Duke is waving.
+      <P>
+
+  <LI>Use the <TT>MediaTracker</TT> class to smooth the loading of these images.
+      The following code will help:
+<PRE>
+// Instance variable
+Image[] images = new Image[10];
+
+// Somewhere in the init() method
+MediaTracker mt = new MediaTracker(this);
+for(int x = 0; x < images.length; x++) {
+  String imageFile = "graphics/Duke/T"+(x+1)+".gif";
+  images[x] = getImage(getDocumentBase(),imageFile);
+  mt.addImage(images[x],0); // Add image to group 0
+}
+mt.waitForID(0); // blocks until all images in group 0 are fully loaded
+</PRE>
+      <P>
+
+  <LI>Allow the user to stop and start the animation using successive mouse clicks.
+      <P>
+
+</OL>
+
+</P>
+
+</BODY>
+
+</HTML>
