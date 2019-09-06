@@ -1,0 +1,1 @@
+Which class should this exercise use? `Scanner` or `BufferedReader`?
