@@ -27,7 +27,7 @@ GridBagConstraints c = new GridBagConstraints();
 
 可以看出来这个`GridBagConstraints c`始终是同一个对象。那么问题来了：`pane.add()`add的是什么呢？看起来是只有参数，而不是传递的对象。在https://blog.csdn.net/xietansheng/article/details/72814552 中则提到，每次使用`GridBagConstraints c`都必须new一个新的对象出来。这里应当有误。
 
-1:15 update: 虽然c这个对象可以复用，然而很大的一个问题是：当给前一个Component设置了Constraint之后，再给另一个设置，就很容易出现忘记改c的参数的情况，于是将错误的属性赋给了另一个控件，于是就容易搞出一些奇怪的问题。解决这个问题也简单，每用一次`GridBagConstraints`都new一次就行了，反正jvm垃圾回收（~~@上海~~）一搞也不浪费内存，就是可能代码看起来难看点（？)
+**1:15 update**: 虽然c这个对象可以复用，然而很大的一个问题是：当给前一个Component设置了Constraint之后，再给另一个设置，就很容易出现忘记改c的参数的情况，于是将错误的属性赋给了另一个控件，于是就容易搞出一些奇怪的问题。解决这个问题也简单，每用一次`GridBagConstraints`都new一次就行了，反正jvm垃圾回收（~~@上海~~）一搞也不浪费内存，就是可能代码看起来难看点（？)
 
 添加一个button再添加第二个的时候，添加不进去。代码是：
 
