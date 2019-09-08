@@ -3,6 +3,7 @@ package exercise1;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.*;
 
 public class ChatClient {
     private JTextArea textArea;
@@ -12,6 +13,7 @@ public class ChatClient {
     private JFrame frame;
     private JPanel panel;
     private JScrollPane scrollPane;
+    final static String ENDL = "\n";
 
     private void launchFrame() {
         panel = new JPanel(new GridBagLayout());
@@ -28,7 +30,6 @@ public class ChatClient {
         c.weightx = 1.0;
         c.weighty = 0.8;
         c.fill = GridBagConstraints.BOTH;
-
         c.gridheight = 3;
         c.insets = new Insets(5, 5, 5, 5);
         panel.add(scrollPane, c);
@@ -41,12 +42,26 @@ public class ChatClient {
         c.gridwidth = 0;
         c.gridheight = 1;
         c.anchor = GridBagConstraints.NORTH;
+        btnSend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea.append(textField.getText() + ENDL);
+                textArea.setCaretPosition(textArea.getDocument().getLength());
+                textField.setText("");
+            }
+        });
         panel.add(btnSend, c);
 
         btnQuit = new JButton("Quit");
         c.gridx = 1;
         c.gridy = 1;
         c.anchor = GridBagConstraints.NORTH;
+        btnQuit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         panel.add(btnQuit, c);
 
         c = new GridBagConstraints();
@@ -60,17 +75,35 @@ public class ChatClient {
         c.weightx = 1;
         c.weighty = 0.2;
         c.fill = GridBagConstraints.BOTH;
-        panel.add(textField, c);
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    textArea.append(textField.getText() + ENDL);
+                    textArea.setCaretPosition(textArea.getDocument().getLength());
+                    textField.setText("");
+                }
+            }
 
+        });
+        panel.add(textField, c);
 
 
     }
 
-    protected ChatClient() {
-        frame = new JFrame("Chat Room");
-
+    private ChatClient() {
         launchFrame();
 
+        frame = new JFrame("Chat Room");
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosed(e);
+                System.exit(0);
+            }
+        });
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(panel);
         frame.setMinimumSize(new Dimension(800, 400));
         frame.pack();
@@ -78,6 +111,8 @@ public class ChatClient {
     }
 
     public static void main(String[] args) {
-        ChatClient client = new ChatClient();
+        new ChatClient();
     }
+
+
 }

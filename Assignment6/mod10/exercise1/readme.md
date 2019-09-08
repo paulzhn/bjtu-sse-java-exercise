@@ -58,7 +58,7 @@ GridBagConstraints c = new GridBagConstraints();
 
 **1:15 update:** `weightx `和`weighty`与`fill`也有关，不调`fill`的话两个weight改了也没有用。
 
-
+**13:02 update:** 创建`JFrame`之后，其上将会创建一个默认的`rootPanel`；因此，在使用自己的`JPanel`的时候，要`frame.getContentPane().add(panel)`而不能直接`frame.add(panel)`。后一种方法添加进去的`panel`与`rootPanel`是平级的，前一种才能让`rootPanel`成为`panel`的父级。
 
 
 

@@ -1,10 +1,10 @@
 package exercise3.db;
 
-public class Product {
+public class Record {
     String name;
-    double quantities;
+    int quantities;
 
-    public Product(String n, double q) {
+    public Record(String n, int q) {
         name = n;
         quantities = q;
     }
@@ -13,7 +13,7 @@ public class Product {
         return name;
     }
 
-    public double getQuantities() {
+    public int getQuantities() {
         return quantities;
     }
 }
