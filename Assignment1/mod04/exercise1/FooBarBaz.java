@@ -13,7 +13,7 @@ public class FooBarBaz {
             if(number % 7 == 0) {
                 System.out.print(" baz");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }
