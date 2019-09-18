@@ -1,7 +1,7 @@
 public class Printer implements Runnable {
+    private static Printer printerInstance;
     private Queue printQueue;
     private boolean stateIsRunning;
-    private static Printer printerInstance;
 
     private Printer() {
         printQueue = new CircularQueue(10);
@@ -17,7 +17,13 @@ public class Printer implements Runnable {
 
     @Override
     public void run() {
-        // todo
+        System.out.println("/tC: Print manager is starting up.");
+        while (stateIsRunning) {
+            while (printQueue.isEmpty()) {
+                System.out.println("/tC: Waiting on a job to print.");
+            }
+
+        }
     }
 
     public synchronized void halt() {
@@ -25,10 +31,22 @@ public class Printer implements Runnable {
     }
 
     public synchronized void addJob(PrintJob job) throws FullQueueException {
-        printQueue.addBack(job);
+        boolean thrown = false;
+        try {
+            printQueue.addBack(job);
+            System.out.println("P: Adding job '" + job.getName() + "' to the queue");
+        } catch (FullQueueException e) {
+            System.out.println("The print queue is full!");
+
+        }
+
+
     }
 
     private synchronized PrintJob getJob() throws EmptyQueueException {
-        return (PrintJob) printQueue.getFront();
+
+        PrintJob a = (PrintJob)printQueue.getFront();
+        printQueue.removeFront();
+        return a;
     }
 }

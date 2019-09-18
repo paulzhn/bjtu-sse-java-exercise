@@ -21,7 +21,7 @@ public class Producer implements Runnable {
             try {
                 Printer.getInstance().addJob(jobs[i]);
             } catch (FullQueueException e) {
-                System.err.println("The print queue is full!");
+
             } finally {
                 try {
                     Thread.sleep(delayBetweenJobs);
