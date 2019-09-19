@@ -1,5 +1,4 @@
 
-
 public class Producer implements Runnable {
     private int sizeOfJobs;
     private int numberOfJobs;
@@ -14,25 +13,18 @@ public class Producer implements Runnable {
     }
 
     @Override
-    public void run() {
-        PrintJob[] jobs = new PrintJob[numberOfJobs];
+    public synchronized void run() {
+        PrintJob job;
         for (int i = 0; i < numberOfJobs; i++) {
-            jobs[i] = new PrintJob(producerName + " #" + (i + 1), sizeOfJobs);
+            job = new PrintJob(producerName + " #" + (i + 1), sizeOfJobs);
+            Printer.getInstance().addJob(job);
             try {
-                Printer.getInstance().addJob(jobs[i]);
-            } catch (FullQueueException e) {
-
-            } finally {
-                try {
-                    Thread.sleep(delayBetweenJobs);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Thread.sleep(delayBetweenJobs);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
         }
-
-
 
     }
 }
