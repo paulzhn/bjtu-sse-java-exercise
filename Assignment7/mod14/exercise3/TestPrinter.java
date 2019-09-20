@@ -21,14 +21,13 @@ public class TestPrinter {
             s.join();
             m.join();
             l.join();
-            while(true){
-                if(p.getState() == Thread.State.WAITING) {
+            while (true) {
+                if (p.getState() == Thread.State.WAITING) {
                     printer.halt();
                     p.interrupt();
                     break;
                 }
             }
-
 
 
         } catch (InterruptedException e) {

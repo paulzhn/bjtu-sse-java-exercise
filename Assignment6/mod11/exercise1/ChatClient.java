@@ -104,7 +104,8 @@ public class ChatClient {
             }
         });
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(panel);
+        // frame.getContentPane().add(panel);
+        frame.add(panel);
         frame.setMinimumSize(new Dimension(800, 400));
         frame.pack();
         frame.setVisible(true);

@@ -107,12 +107,12 @@ public class ChatClient {
         panel.add(btnQuit, c);
 
         user = new JComboBox<>(new String[]{"Paul", "Crystal", "Tony"});
-        userName = (String) user.getSelectedItem();
+        userName = (String)user.getSelectedItem();
         user.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox cb = (JComboBox) e.getSource();
-                userName = (String) cb.getSelectedItem();
+                JComboBox cb = (JComboBox)e.getSource();
+                userName = (String)cb.getSelectedItem();
             }
         });
         c = new GridBagConstraints();
