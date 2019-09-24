@@ -13,60 +13,60 @@ import java.io.*;
 
 class ReadFile {
 
-  // This method will send the file name to read to the 
-  // server. You need to set up your own data output 
-  // stream to pass the filename to the server (which 
-  // should be reading a data input stream and expecting 
-  // a string).
+    // This method will send the file name to read to the
+    // server. You need to set up your own data output
+    // stream to pass the filename to the server (which
+    // should be reading a data input stream and expecting
+    // a string).
 
-  public static void sendFileName(
-        Socket s, String fileName) 
-        throws IOException {
+    public static void sendFileName(
+            Socket s, String fileName)
+            throws IOException {
 
-    // FILL IN THIS METHOD - Hint: create a stream to 
-    // send the filename to the server
+        // FILL IN THIS METHOD - Hint: create a stream to
+        // send the filename to the server
 
-  }
-
-  // This method will receive the file from the Server, 
-  // or the result of the attempt to read the file.
-
-  public static void receiveFile(Socket s) 
-        throws IOException {
-
-    // FILL IN THIS METHOD - Hint: look at the 
-    // simpleClient code
-
-  }
-
-  public static void main(String args[]) {
-    Socket s;
-    int port = 4321;
-
-    // Did we receive the correct number of arguments?
-    if (args.length != 2) {
-      System.out.println(
-          "Usage: java ReadFile <server> <file>");
-      System.exit (-1);
     }
 
-    try {
+    // This method will receive the file from the Server,
+    // or the result of the attempt to read the file.
 
-      // Open our connection to args[0]
-      s = new Socket(args[0], port);
+    public static void receiveFile(Socket s)
+            throws IOException {
 
-      // Send the file name to the Server
-      sendFileName (s, args[1]);
+        // FILL IN THIS METHOD - Hint: look at the
+        // simpleClient code
 
-      // Output the file (or result of the request)
-      receiveFile (s);
-
-      // When the EOF is reached, just close the 
-      // connection and exit
-      s.close();
-
-    } catch (IOException e) {
-      // ignore
     }
-  }
+
+    public static void main(String args[]) {
+        Socket s;
+        int port = 4321;
+
+        // Did we receive the correct number of arguments?
+        if (args.length != 2) {
+            System.out.println(
+                    "Usage: java ReadFile <server> <file>");
+            System.exit(-1);
+        }
+
+        try {
+
+            // Open our connection to args[0]
+            s = new Socket(args[0], port);
+
+            // Send the file name to the Server
+            sendFileName(s, args[1]);
+
+            // Output the file (or result of the request)
+            receiveFile(s);
+
+            // When the EOF is reached, just close the
+            // connection and exit
+            s.close();
+
+        } catch (IOException e) {
+            // ignore
+        }
+    }
 }
