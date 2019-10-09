@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 
 public class RemoteReader implements Runnable {
-    private final Listener listener;
+    private Listener listener;
     Socket socket;
     PrintStream serverOut;
     BufferedReader serverIn;

@@ -4,9 +4,8 @@
 // the server to read. Opens a connection with the server 
 // and displays the resultant file or an error result
 
-import java.awt.*;
-import java.net.*;
 import java.io.*;
+import java.net.Socket;
 
 // This is the lab template. 
 // Fill in the code for the two methods called from main
@@ -19,23 +18,30 @@ class ReadFile {
     // should be reading a data input stream and expecting
     // a string).
 
-    public static void sendFileName(
-            Socket s, String fileName)
-            throws IOException {
-
-        // FILL IN THIS METHOD - Hint: create a stream to
-        // send the filename to the server
-
+    public static void sendFileName(Socket s, String fileName) throws IOException {
+        PrintStream writer = new PrintStream(s.getOutputStream());
+        writer.println(fileName);
     }
 
     // This method will receive the file from the Server,
     // or the result of the attempt to read the file.
 
-    public static void receiveFile(Socket s)
-            throws IOException {
-
+    public static void receiveFile(Socket s, String fileName) throws IOException {
+        // NOTICE: I have rewritten this method, adding the second arg fileName,
+        // to save the received file to the specific location.
         // FILL IN THIS METHOD - Hint: look at the
         // simpleClient code
+
+        // Practically, the two java programs are usually run at the same directory,
+        // so add .bak to prevent overwrite the source file.
+        File f = new File(fileName + ".bak");
+        FileOutputStream writer = new FileOutputStream(f);
+        InputStream reader = s.getInputStream();
+        int tmp;
+        while ((tmp = reader.read()) != -1) {
+            writer.write(tmp);
+        }
+        writer.close();
 
     }
 
@@ -45,8 +51,7 @@ class ReadFile {
 
         // Did we receive the correct number of arguments?
         if (args.length != 2) {
-            System.out.println(
-                    "Usage: java ReadFile <server> <file>");
+            System.out.println("Usage: java ReadFile <server> <file>");
             System.exit(-1);
         }
 
@@ -59,7 +64,7 @@ class ReadFile {
             sendFileName(s, args[1]);
 
             // Output the file (or result of the request)
-            receiveFile(s);
+            receiveFile(s, args[1]);
 
             // When the EOF is reached, just close the
             // connection and exit
