@@ -8,7 +8,8 @@ public class TestExceptions {
                 System.out.println("args[" + i + "] is '" + args[i] + "'");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Exception caught: " + e.toString());
+            System.out.println("Quiting...");
         }
     }
 }
