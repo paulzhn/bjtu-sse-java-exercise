@@ -1,7 +1,7 @@
-package mod09.exercise4.banking.reports;
+package banking.reports;
 
-import mod09.exercise4.banking.domain.*;
-
+import banking.domain.*;
+import java.util.Locale;
 import java.text.NumberFormat;
 //TODO
 // Why should it be modified to use ArrayList?
@@ -9,12 +9,12 @@ import java.text.NumberFormat;
 public class CustomerReport {
 
     public void generateReport() {
-        NumberFormat currency_format = NumberFormat.getCurrencyInstance();
+        NumberFormat currency_format = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
         Bank bank = Bank.getBank(); /*** STEP 1: RETRIEVE BANK SINGLETON OBJECT HERE ***/
 
         Customer customer;
-
+        bank.sortCustomers();
         System.out.println("\t\t\tCUSTOMERS REPORT");
         System.out.println("\t\t\t================");
 

@@ -1,4 +1,4 @@
-package mod09.exercise5.banking.domain;
+package banking.domain;
 
 public class OverdraftException extends Exception{
     private double deficit;

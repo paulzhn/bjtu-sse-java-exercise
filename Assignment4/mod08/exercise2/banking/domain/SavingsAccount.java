@@ -1,4 +1,4 @@
-package mod08.exercise2.banking.domain;
+package banking.domain;
 
 public class SavingsAccount extends Account {
     private double interestRate;

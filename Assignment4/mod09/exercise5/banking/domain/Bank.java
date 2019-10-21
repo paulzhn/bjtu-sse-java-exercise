@@ -1,4 +1,4 @@
-package mod09.exercise5.banking.domain;
+package banking.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;

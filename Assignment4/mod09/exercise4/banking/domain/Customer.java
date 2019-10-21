@@ -1,4 +1,4 @@
-package mod09.exercise4.banking.domain;
+package banking.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -42,6 +42,7 @@ public class Customer implements Comparable<Customer> {
         return account.iterator();
     }
 
+    @Override
     public int compareTo(Customer o) {
         if (lastName.compareTo(o.lastName) != 0) {
             return lastName.compareTo(o.lastName);

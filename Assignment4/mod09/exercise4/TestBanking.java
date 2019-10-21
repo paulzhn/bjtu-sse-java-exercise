@@ -3,10 +3,10 @@
  * It creates a set of customers, with a few accounts each,
  * and generates a report of current account balances.
  */
-package mod09.exercise4;
 
-import mod09.exercise4.banking.reports.CustomerReport;
-import mod09.exercise4.banking.domain.*;
+
+import banking.reports.CustomerReport;
+import banking.domain.*;
 
 public class TestBanking {
 
@@ -35,7 +35,7 @@ public class TestBanking {
         // Maria and Tim have a shared checking account
         customer.addAccount(bank.getCustomer(2).getAccount(1));
         customer.addAccount(new SavingsAccount(150.00, 0.05));
-        bank.sortCustomers();
+
         // Generate a report
         report.generateReport();
     }

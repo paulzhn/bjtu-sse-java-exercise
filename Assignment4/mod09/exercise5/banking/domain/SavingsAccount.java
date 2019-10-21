@@ -1,4 +1,4 @@
-package mod09.exercise5.banking.domain;
+package banking.domain;
 
 /**
  * Provide methods to operate the customer's savings account.

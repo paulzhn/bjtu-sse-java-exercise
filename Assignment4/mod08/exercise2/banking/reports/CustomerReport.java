@@ -1,7 +1,7 @@
-package mod08.exercise2.banking.reports;
+package banking.reports;
 
-import mod08.exercise2.banking.domain.*;
-import mod08.exercise2.banking.domain.Bank;
+import banking.domain.*;
+import banking.domain.Bank;
 
 import java.text.NumberFormat;
 

@@ -1,4 +1,4 @@
-package mod09.exercise5.banking.domain;
+package banking.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,14 +31,29 @@ public class Customer implements Comparable<Customer> {
         lastName = l;
     }
 
+    /**
+     * Get the customer's first name.
+     * @return the customer's first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+
+    /**
+     * Get the customer's last name.
+     * @return the customer's last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Get the customer's specified account by index.
+     * 
+     * @param index the index of specified account
+     * @return the customer's specified account
+     */
     public Account getAccount(int index) {
         return account.get(index);
     }

@@ -1,4 +1,4 @@
-package mod09.exercise3.banking.domain;
+package banking.domain;
 
 import java.util.ArrayList;
 import java.util.Iterator;

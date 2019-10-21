@@ -1,6 +1,6 @@
-package mod09.exercise3.banking.reports;
+package banking.reports;
 
-import mod09.exercise3.banking.domain.*;
+import banking.domain.*;
 
 import java.text.NumberFormat;
 //TODO

@@ -1,4 +1,4 @@
-package mod09.exercise3.banking.domain;
+package banking.domain;
 
 public class CheckingAccount extends Account {
     private double overdraftProtection = 0;

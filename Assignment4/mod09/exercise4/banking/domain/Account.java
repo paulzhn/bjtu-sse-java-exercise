@@ -1,4 +1,4 @@
-package mod09.exercise4.banking.domain;
+package banking.domain;
 
 public class Account {
     protected double balance;

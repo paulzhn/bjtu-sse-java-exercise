@@ -3,10 +3,10 @@
  * It creates a set of customers, with a few accounts each,
  * and generates a report of current account balances.
  */
-package mod09.exercise3;
 
-import mod09.exercise3.banking.domain.*;
-import mod09.exercise3.banking.reports.CustomerReport;
+
+import banking.domain.*;
+import banking.reports.CustomerReport;
 
 public class TestBanking {
 
