@@ -25,6 +25,7 @@ public class Fish extends Animal {
         System.out.println("Fish have no legs and cannot walk.");
     }
 
+    @Override
     public void eat() {
         System.out.println("Fish can eat.");
     }
@@ -32,4 +33,5 @@ public class Fish extends Animal {
     public void play() {
         System.out.println("Fish can play.");
     }
+
 }
