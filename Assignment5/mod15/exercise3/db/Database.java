@@ -90,14 +90,14 @@ public class Database {
             return;
         }
         long pos = Long.parseLong(result.get(2));
-
+        Scanner sc = new Scanner(System.in);
         while (true) {
             boolean ok = true;
 
             String modifiedName;
             String tmp;
             int modifiedQuantity;
-            Scanner sc = new Scanner(System.in);
+            
             System.out.println("Please input the modified name, enter for not modifying: ");
             modifiedName = sc.nextLine();
             if (modifiedName.isEmpty()) {
@@ -112,12 +112,14 @@ public class Database {
                 }
             }
             if (tmp.isEmpty()) {
+                // remove the whitespace
                 tmp = result.get(1).split(" ")[0];
             }
             if (ok) {
                 modifiedQuantity = Integer.parseInt(tmp);
                 if (judgeLegal(name, modifiedQuantity)) {
                     add(modifiedName, modifiedQuantity, pos);
+                    sc.close();
                     return;
                 }
             }
