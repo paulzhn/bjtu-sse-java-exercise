@@ -16,15 +16,16 @@ import java.util.Scanner;
  * @since 2019/10/21
  */
 public class Database {
-    String fileName = "data.txt";
-    RandomAccessFile raf;
+    private String fileName = "data.txt";
+    private RandomAccessFile raf;
     /**
      * To make sure file pointer move correctly, every entry is set to be 32 bytes.
      */
     private final int LENGTH_OF_ENTRY = 32;
-    private static BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+    private BufferedReader stdIn;
 
-    public Database() throws IOException {
+    public Database(BufferedReader stdIn) throws IOException {
+        this.stdIn = stdIn;
         raf = new RandomAccessFile(fileName, "rw");
     }
 
@@ -90,7 +91,7 @@ public class Database {
             return;
         }
         long pos = Long.parseLong(result.get(2));
-        Scanner sc = new Scanner(System.in);
+
         while (true) {
             boolean ok = true;
 
@@ -99,12 +100,12 @@ public class Database {
             int modifiedQuantity;
             
             System.out.println("Please input the modified name, enter for not modifying: ");
-            modifiedName = sc.nextLine();
+            modifiedName = stdIn.readLine();
             if (modifiedName.isEmpty()) {
                 modifiedName = name;
             }
             System.out.println("Please input the modified quantity, enter for not modifying: ");
-            tmp = sc.nextLine();
+            tmp = stdIn.readLine();
             for (int i = 0; i < tmp.length(); i++) {
                 if (tmp.charAt(i) < '0' || tmp.charAt(i) > '9') {
                     ok = false;
@@ -119,7 +120,6 @@ public class Database {
                 modifiedQuantity = Integer.parseInt(tmp);
                 if (judgeLegal(name, modifiedQuantity)) {
                     add(modifiedName, modifiedQuantity, pos);
-                    sc.close();
                     return;
                 }
             }

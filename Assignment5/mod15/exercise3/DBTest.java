@@ -12,7 +12,7 @@ public class DBTest {
 
     public DBTest() {
         try {
-            db = new Database();
+            db = new Database(stdIn);
         } catch (IOException e) {
             e.printStackTrace();
         }
