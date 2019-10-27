@@ -1,4 +1,4 @@
-package exercise2;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class CalculatorGUI implements ActionListener {
     private ModeSwitch mode = ModeSwitch.normal;
     private String answerString;
     private double answerDouble;
-    final static int MAXLENGTH = 12;
+    private final static int MAXLENGTH = 12;
     private Calculator calc;
 
     // Where answer will be displayed.
@@ -29,7 +29,7 @@ public class CalculatorGUI implements ActionListener {
 
         calc = new Calculator();
         answer = new JLabel("0", SwingConstants.RIGHT);
-        answerString = new String("0");
+        answerString = "0";
         key = new JButton[10];
         for (int i = 0; i < 10; i++) {
             key[i] = new JButton(Integer.toString(i));

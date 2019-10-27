@@ -116,34 +116,6 @@ Customer: Soley, Maria
     Savings Account: current balance is ￥150.00
 ```
 
-### exercise 4
-
-#### input
-
-N/A
-
-#### output
-
-```
-                        CUSTOMERS REPORT
-                        ================
-
-Customer: Bryant, Owen
-    Checking Account: current balance is 200,00 €
-
-Customer: Simms, Jane
-    Savings Account: current balance is 500,00 €
-    Checking Account: current balance is 200,00 €
-
-Customer: Soley, Maria
-    Checking Account: current balance is 200,00 €
-    Savings Account: current balance is 150,00 €
-
-Customer: Soley, Tim
-    Savings Account: current balance is 1.500,00 €
-    Checking Account: current balance is 200,00 €
-```
-
 ### exercise 5
 
 #### input

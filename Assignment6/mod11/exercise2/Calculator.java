@@ -1,9 +1,12 @@
-package exercise2;
+
 
 public class Calculator {
     public double num = 0.0;
 
     public enum CalMode {
+        /**
+         * 枚举计算器可能有的几种模式
+         */
         plus, minus, multiply, divide, normal
     }
 
@@ -62,11 +65,13 @@ public class Calculator {
             case normal:
                 num = d;
                 break;
+            default:
+                break;
         }
         mode = CalMode.normal;
     }
 
-    public boolean ifNormal(Double d) {
+    private boolean ifNormal(Double d) {
         if (mode == CalMode.normal) {
             num = d;
             return true;
